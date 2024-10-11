@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Web AR with AR.js and A-Frame</title>
+  
+  <!-- For remote debugging -->
+  <script data-consolejs-channel="9cc02fdb-a534-4730-ac47-2a8e584e93f8" src="https://remotejs.com/agent/agent.js"></script>
+
+  <!-- importinfg AR.js and AFRAME libraries -->
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+  
+  <!-- importing JS file -->
+  <script src="imagetracking_AFrame.js" defer></script>
+  
+  <style>
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+  </style>
+  
+</head>
+
+
+<body >
+  <a-scene embedded arjs vr-mode-ui='enabled: false;'
+  renderer="logarithmicDepthBuffer: true; precision: medium;"
+  embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'> 
+    
+    <a-nft
+        type="nft" url="./markers/Imagetarget"
+        smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
+
+
+
+      <a-entity id="model" 
+        position="65 0 -150" 
+        scale="100 100 100"
+        gltf-model="./models/scene.glb"
+        animation-mixer="clip: Dog_Stand_Idle_01_Bot; loop: repeat; timeScale: 1">
+      </a-entity>
+
+
+
+    </a-nft>
+
+    <a-entity camera ></a-entity>
+  </a-scene>
+</body>
+</html>
